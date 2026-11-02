@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - University Cafeteria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/cafeteria.css" asp-append-version="true" />
+</head>
+<body class="simple-layout">
+    <header class="simple-header">
+        <div class="container">
+            <p class="eyebrow">University Cafeteria</p>
+            <h1>Supplier Directory</h1>
+        </div>
+    </header>
+    <main class="container page-content simple-content">
+        @RenderBody()
+    </main>
+    <footer class="page-footer">
+        <div class="container">&copy; 2026 University Cafeteria &middot; Supplier directory</div>
+    </footer>
+</body>
+</html>

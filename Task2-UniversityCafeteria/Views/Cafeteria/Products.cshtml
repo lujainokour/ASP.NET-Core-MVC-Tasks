@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Products";
+    ViewData["BodyClass"] = "products-background";
+    string[] products = { "Water", "Orange Juice", "Coffee", "Sandwich", "Chocolate" };
+}
+
+<link rel="stylesheet" href="~/css/products.css" asp-append-version="true" />
+
+<section class="products-page">
+    <p class="eyebrow">Our daily essentials</p>
+    <h1>Products</h1>
+    <p class="intro">A little refreshment for every part of the university day.</p>
+
+    @if (products.Length == 0)
+    {
+        <p class="alert alert-secondary">No products are currently listed.</p>
+    }
+    else
+    {
+        <ul class="product-list">
+            @foreach (string product in products)
+            {
+                <li>@product</li>
+            }
+        </ul>
+    }
+
+    @if (products.Length >= 3)
+    {
+        <p class="alert alert-success">We have enough Products.</p>
+    }
+    else
+    {
+        <p class="alert alert-warning">We need more Products.</p>
+    }
+</section>
+
+@section Scripts {
+    <script>
+        alert("Welcome to the Products Page!");
+    </script>
+}

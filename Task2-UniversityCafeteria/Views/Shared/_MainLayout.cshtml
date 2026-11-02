@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - University Cafeteria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/cafeteria.css" asp-append-version="true" />
+</head>
+<body class="@ViewData["BodyClass"]">
+    <header class="main-header">
+        <nav class="container navigation" aria-label="Main navigation">
+            <a class="brand" asp-controller="Cafeteria" asp-action="Index">University Cafeteria</a>
+            <div class="nav-links">
+                <a asp-controller="Cafeteria" asp-action="Index">Home</a>
+                <a asp-controller="Cafeteria" asp-action="Products">Products</a>
+                <a asp-controller="Cafeteria" asp-action="Suppliers">Suppliers</a>
+                <a asp-controller="Cafeteria" asp-action="SupplyStatus">Supply Status</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container page-content">
+        @RenderBody()
+    </main>
+    <footer class="page-footer">
+        <div class="container">&copy; 2026 University Cafeteria &middot; Campus supply management</div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

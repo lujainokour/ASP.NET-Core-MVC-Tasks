@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Home";
+    string universityName = "Orange University";
+    string managerName = "Ahmad Ali";
+    int totalProducts = 5;
+}
+
+<section class="welcome-panel">
+    <p class="eyebrow">Campus essentials, organized</p>
+    <h1>Welcome to @universityName Cafeteria</h1>
+    <p class="intro">A simple place to explore our products, meet our suppliers, and check the latest supply status.</p>
+    <a class="btn btn-dark" asp-controller="Cafeteria" asp-action="Products">Explore products &rarr;</a>
+</section>
+
+<div class="row g-4 mt-1">
+    <section class="col-md-6">
+        <div class="info-card h-100">
+            <p class="eyebrow">Cafeteria manager</p>
+            <h2>@managerName</h2>
+            <p class="mb-0 text-secondary">Keeping our campus supplied every day.</p>
+        </div>
+    </section>
+    <section class="col-md-6">
+        <div class="info-card h-100">
+            <p class="eyebrow">Total products</p>
+            <h2>@totalProducts</h2>
+            <p class="mb-0 text-secondary">Food and drinks in our product catalogue.</p>
+        </div>
+    </section>
+</div>

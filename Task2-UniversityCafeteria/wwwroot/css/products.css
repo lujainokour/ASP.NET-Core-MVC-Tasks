@@ -1,0 +1,21 @@
+body.products-background { background: #fff8ee; }
+.products-page h1 { color: #864614; }
+.products-page .eyebrow { color: #94551f; }
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+.product-list li {
+    background: #fff;
+    border: 1px solid #ead8bd;
+    border-top: 4px solid #eea24e;
+    border-radius: 0.8rem;
+    padding: 1.8rem 1.2rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #71411c;
+}
