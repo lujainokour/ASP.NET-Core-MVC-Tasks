@@ -45,7 +45,6 @@ public class SupplyController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult SubmitRequest()
     {
-        // Read the posted fields directly to practice Request.Form.
         var employeeName = Request.Form["EmployeeName"].ToString().Trim();
         var productName = Request.Form["ProductName"].ToString();
         var quantityText = Request.Form["Quantity"].ToString();
