@@ -1,0 +1,20 @@
+@{
+    var products = (string[])ViewData["Products"]!;
+}
+<h1>@ViewData["Title"]</h1>
+<div class="row g-3 mb-4">
+    <div class="col-sm-6"><div class="card h-100"><div class="card-body">
+        <h2 class="h5">Manager</h2><p class="mb-0">@ViewData["ManagerName"]</p>
+    </div></div></div>
+    <div class="col-sm-6"><div class="card h-100"><div class="card-body">
+        <h2 class="h5">Number of products</h2><p class="mb-0">@ViewData["NumberOfProducts"]</p>
+    </div></div></div>
+</div>
+<div class="row g-3">
+    @foreach (var product in products)
+    {
+        <div class="col-sm-6 col-lg-4"><div class="card h-100"><div class="card-body">
+            <h2 class="h5 mb-0">@product</h2>
+        </div></div></div>
+    }
+</div>

@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "About";
+}
+<h1>About University Cafeteria</h1>
+@if (TempData["Message"] is string message)
+{
+    <div class="alert alert-success" role="status">@message</div>
+}
+<p>This application manages cafeteria products, suppliers, and supply request submissions.</p>
+<p>Day 3 demonstrates ViewData, ViewBag, Request.Form, TempData, and controller routing without an external database.</p>
+<a class="btn btn-primary" asp-action="CreateRequest">Create another request</a>

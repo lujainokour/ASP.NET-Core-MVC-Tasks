@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Check Quantity";
+}
+<h1>Check order quantity</h1>
+<form asp-action="CheckQuantity" method="get" class="col-md-6 mb-4">
+    <label for="quantity" class="form-label">Quantity</label>
+    <div class="input-group">
+        <input id="quantity" name="quantity" type="number" min="0" step="1" value="@ViewBag.Quantity" class="form-control" required />
+        <button class="btn btn-primary" type="submit">Classify</button>
+    </div>
+</form>
+@if (ViewBag.Error is string error)
+{
+    <div class="alert alert-danger" role="alert">@error</div>
+}
+else
+{
+    <div class="alert alert-info" role="status">@ViewBag.Quantity: <strong>@ViewBag.Classification</strong></div>
+}
+<p>Below 20: Small Order. From 20 to 50: Medium Order. Above 50: Large Order.</p>

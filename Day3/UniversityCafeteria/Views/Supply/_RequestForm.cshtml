@@ -1,0 +1,30 @@
+@{
+    var products = (string[])ViewData["Products"]!;
+    var selectedProduct = ViewData["ProductName"] as string;
+}
+<form asp-controller="Supply" asp-action="SubmitRequest" method="post" class="col-lg-7">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="mb-3">
+        <label for="EmployeeName" class="form-label">Employee Name</label>
+        <input id="EmployeeName" name="EmployeeName" type="text" class="form-control" value="@ViewData["EmployeeName"]" required />
+    </div>
+    <div class="mb-3">
+        <label for="ProductName" class="form-label">Product Name</label>
+        <select id="ProductName" name="ProductName" class="form-select" required>
+            <option value="">Select a product</option>
+            @foreach (var product in products)
+            {
+                <option value="@product" selected="@(product == selectedProduct)">@product</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="Quantity" class="form-label">Quantity</label>
+        <input id="Quantity" name="Quantity" type="number" min="1" step="1" class="form-control" value="@ViewData["Quantity"]" required />
+    </div>
+    <div class="mb-3">
+        <label for="RequiredDate" class="form-label">Required Date</label>
+        <input id="RequiredDate" name="RequiredDate" type="date" class="form-control" value="@ViewData["RequiredDate"]" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit request</button>
+</form>
