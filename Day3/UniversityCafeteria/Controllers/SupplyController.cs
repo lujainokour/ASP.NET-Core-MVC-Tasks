@@ -76,20 +76,4 @@ public class SupplyController : Controller
 
     [HttpGet]
     public IActionResult About() => View();
-
-    [HttpGet]
-    public IActionResult CheckQuantity(int quantity)
-    {
-        if (!ModelState.IsValid || quantity < 0)
-        {
-            ViewBag.Error = "Enter a non-negative whole number.";
-        }
-        else
-        {
-            ViewBag.Classification = quantity < 20 ? "Small Order"
-                : quantity <= 50 ? "Medium Order" : "Large Order";
-        }
-        ViewBag.Quantity = quantity;
-        return View();
-    }
 }
