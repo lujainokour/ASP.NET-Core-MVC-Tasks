@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Home";
+}
+<h1>University Cafeteria</h1>
+<p class="lead">Manage cafeteria products, suppliers, and supply requests.</p>
+<h2>Product categories</h2>
+<ul class="list-group mb-4">
+    @foreach (string category in ViewBag.Categories)
+    {
+        <li class="list-group-item">@category</li>
+    }
+</ul>
+<a class="btn btn-primary" asp-controller="SupplyRequest" asp-action="Index">Create a supply request</a>

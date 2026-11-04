@@ -1,0 +1,82 @@
+@model SupplyRequest
+@{
+    ViewData["Title"] = "Create Supply Request";
+}
+<h1>Create Supply Request</h1>
+@if (TempData["Message"] is string message)
+{
+    <div class="alert alert-success" role="status">@message</div>
+}
+@if (TempData["Error"] is string error)
+{
+    <div class="alert alert-danger" role="alert">@error</div>
+}
+<div asp-validation-summary="All" class="text-danger" role="alert"></div>
+<form action="@Url.Action("AddItem", "SupplyRequest")" method="post" class="col-lg-7 mb-4">
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        <label for="ProductName" class="form-label">Product Name</label>
+        <input id="ProductName" name="ProductName" type="text" class="form-control" value="@ViewData.ModelState["ProductName"]?.AttemptedValue" required />
+    </div>
+    <div class="mb-3">
+        <label for="Category" class="form-label">Category</label>
+        <input id="Category" name="Category" type="text" class="form-control" value="@ViewData.ModelState["Category"]?.AttemptedValue" />
+    </div>
+    <div class="mb-3">
+        <label for="Quantity" class="form-label">Quantity</label>
+        <input id="Quantity" name="Quantity" type="number" min="1" step="1" class="form-control" value="@ViewData.ModelState["Quantity"]?.AttemptedValue" required />
+    </div>
+    <div class="mb-3">
+        <label for="UnitPrice" class="form-label">Unit Price (JD)</label>
+        <input id="UnitPrice" name="UnitPrice" type="number" min="0.01" step="0.01" class="form-control" value="@ViewData.ModelState["UnitPrice"]?.AttemptedValue" required />
+    </div>
+    <div class="mb-3">
+        <label for="Priority" class="form-label">Request Priority</label>
+        <select id="Priority" name="priority" class="form-select">
+            @foreach (var priority in new[] { "Normal", "Urgent", "Emergency" })
+            {
+                <option value="@priority" selected="@(priority == Model.Priority)">@priority</option>
+            }
+        </select>
+        <p class="form-text">This priority applies to the whole request. Adding an item updates the request priority.</p>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+</form>
+<h2 class="h4">Current Draft</h2>
+<p>Products added: @Model.Items.Count | Request priority: @Model.Priority</p>
+@if (Model.Items.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead><tr><th>Product</th><th>Category</th><th>Quantity</th><th>Unit Price (JD)</th></tr></thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr><td>@item.ProductName</td><td>@item.Category</td><td>@item.Quantity</td><td>@item.UnitPrice.ToString("F2")</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-outline-primary mb-3" href="@Url.Action("Review", "SupplyRequest")">Review Draft</a>
+    <form action="@Url.Action("ClearDraft", "SupplyRequest")" method="post" class="d-inline">
+        @Html.AntiForgeryToken()
+        <button class="btn btn-outline-danger mb-3" type="submit">Clear Draft</button>
+    </form>
+}
+else
+{
+    <p>No products have been added yet.</p>
+}
+<h2 class="h4 mt-4">Preferred Priority</h2>
+<p>Your preferred request priority is @ViewBag.PreferredPriority.</p>
+<form action="@Url.Action("SavePreference", "SupplyRequest")" method="post" class="col-md-5">
+    @Html.AntiForgeryToken()
+    <label for="PreferredPriority" class="form-label">Default priority</label>
+    <select id="PreferredPriority" name="priority" class="form-select mb-2">
+        @foreach (var priority in new[] { "Normal", "Urgent", "Emergency" })
+        {
+            <option value="@priority" selected="@(priority == (string)ViewBag.PreferredPriority)">@priority</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-secondary">Save Preference</button>
+</form>

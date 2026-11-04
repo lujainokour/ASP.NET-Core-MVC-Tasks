@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - University Cafeteria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-4">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Supply")">University Cafeteria</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Supply")">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Products", "Supply")">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Suppliers", "Supply")">Suppliers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "SupplyRequest")">Create Supply Request</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Review", "SupplyRequest")">Review Draft</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("MyRequests", "SupplyRequest")">My Requests</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("About", "SupplyRequest")">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container pb-5">
+        @RenderBody()
+    </main>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

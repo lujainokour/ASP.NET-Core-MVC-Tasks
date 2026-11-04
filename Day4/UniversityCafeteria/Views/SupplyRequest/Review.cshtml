@@ -1,0 +1,43 @@
+@model SupplyRequest
+@{
+    ViewData["Title"] = "Review Draft";
+}
+<h1>Review Draft</h1>
+@if (Model.Items.Count == 0)
+{
+    <p>Your draft is empty. Add at least one product before confirming.</p>
+    <a href="@Url.Action("Index", "SupplyRequest")" class="btn btn-primary">Add Products</a>
+}
+else
+{
+    <p>Request priority: <strong>@Model.Priority</strong></p>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead><tr><th>Product</th><th>Category</th><th>Quantity</th><th>Unit Price (JD)</th><th>Total (JD)</th></tr></thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.ProductName</td><td>@item.Category</td><td>@item.Quantity</td>
+                        <td>@item.UnitPrice.ToString("F2")</td><td>@item.Total.ToString("F2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <dl class="row">
+        <dt class="col-sm-4">Subtotal</dt><dd class="col-sm-8" id="subtotal">@Model.Subtotal.ToString("F2") JD</dd>
+        <dt class="col-sm-4">Preparation Fee</dt><dd class="col-sm-8" id="preparationFee">@Model.PreparationFee.ToString("F2") JD</dd>
+        <dt class="col-sm-4">Discount</dt><dd class="col-sm-8" id="discount">@Model.Discount.ToString("F2") JD</dd>
+        <dt class="col-sm-4">Final Total</dt><dd class="col-sm-8" id="finalTotal">@Model.FinalTotal.ToString("F2") JD</dd>
+    </dl>
+    <form action="@Url.Action("ConfirmRequest", "SupplyRequest")" method="post" class="d-inline">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-success">Confirm Request</button>
+    </form>
+    <a href="@Url.Action("Index", "SupplyRequest")" class="btn btn-outline-primary">Add More Products</a>
+    <form action="@Url.Action("ClearDraft", "SupplyRequest")" method="post" class="d-inline">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-outline-danger">Clear Draft</button>
+    </form>
+}
