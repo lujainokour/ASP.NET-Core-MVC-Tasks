@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafeteria Management</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <h1>University Cafeteria</h1>
+    <nav>
+        @Html.ActionLink("Categories", "Index", "Category") |
+        @Html.ActionLink("Suppliers", "Index", "Supplier") |
+        @Html.ActionLink("Products", "Index", "Product")
+    </nav>
+    <hr />
+    @RenderBody()
+</body>
+</html>

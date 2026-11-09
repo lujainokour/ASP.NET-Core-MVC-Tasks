@@ -1,0 +1,30 @@
+@model Product
+
+<h2>Add Product</h2>
+@using (Html.BeginForm("Create", "Product", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+    <p>
+        @Html.LabelFor(model => model.Name)<br />
+        @Html.TextBoxFor(model => model.Name, new { required = "required" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Price)<br />
+        @Html.TextBoxFor(model => model.Price, new { type = "number", step = "0.01", min = "0", required = "required" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Quantity)<br />
+        @Html.TextBoxFor(model => model.Quantity, new { type = "number", min = "0", required = "required" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.CategoryId)<br />
+        @Html.DropDownListFor(model => model.CategoryId, (SelectList)ViewBag.Categories, "Choose category")
+    </p>
+    <p>
+        @Html.LabelFor(model => model.SupplierId)<br />
+        @Html.DropDownListFor(model => model.SupplierId, (SelectList)ViewBag.Suppliers, "Choose supplier")
+    </p>
+    <button type="submit">Save</button>
+}
+<p>@Html.ActionLink("Back", "Index")</p>

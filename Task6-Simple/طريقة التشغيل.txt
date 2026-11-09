@@ -1,0 +1,19 @@
+المشروع بنفس فكرة المثال وبكود بسيط ومباشر.
+
+1. افتح ملف CafeteriaTask6Simple.sql في SQL Server Management Studio وشغله مرة واحدة على قاعدة جديدة.
+   على هذا الجهاز تم تشغيله بالفعل على localhost، فلا تحتاج لتشغيله مرة ثانية.
+2. افتح mvc-task6.slnx في Visual Studio الذي يدعم .NET 10.
+3. إذا كان اسم السيرفر عندك مختلفًا، عدل Server في ملف mvc-task6/appsettings.json.
+4. شغل المشروع، ثم أضف Category وبعدها Supplier وبعدها Product.
+
+ملف SQL موجود خارج مشروع Visual Studio ولا يظهر داخله.
+تم توليد أوامر الجداول من موديلات Entity Framework Core.
+المشروع يتصل بقاعدة SQL Server مباشرة؛ لا يحتاج Add-Migration أو Update-Database لتشغيل هذا الحل.
+
+Models: خصائص الجداول والعلاقات.
+ApplicationDbContext: يحتوي DbSet لكل جدول.
+Index: يعرض السجلات باستخدام ToList.
+Create GET: يعرض نموذج الإضافة.
+Create POST: يحفظ باستخدام Add وSaveChanges ثم يرجع إلى Index.
+Views: تستخدم HTML Helpers مثل BeginForm وTextBoxFor وDisplayFor.
+قوائم المنتج تختار التصنيف والمورد اللذين أضفتهما.

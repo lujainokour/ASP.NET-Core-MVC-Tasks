@@ -1,0 +1,27 @@
+@model List<Product>
+
+<h2>Products</h2>
+<p>@Html.ActionLink("Add Product", "Create")</p>
+<table>
+    <thead><tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>CategoryId</th>
+        <th>SupplierId</th>
+    </tr></thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+            <td>@Html.DisplayFor(modelItem => item.CategoryId)</td>
+            <td>@Html.DisplayFor(modelItem => item.SupplierId)</td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+@model List<Category>
+
+<h2>Categories</h2>
+<p>@Html.ActionLink("Add Category", "Create")</p>
+<table>
+    <thead><tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr></thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+        </tr>
+    }
+    </tbody>
+</table>

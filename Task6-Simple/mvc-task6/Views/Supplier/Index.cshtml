@@ -1,0 +1,23 @@
+@model List<Supplier>
+
+<h2>Suppliers</h2>
+<p>@Html.ActionLink("Add Supplier", "Create")</p>
+<table>
+    <thead><tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr></thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+        </tr>
+    }
+    </tbody>
+</table>
