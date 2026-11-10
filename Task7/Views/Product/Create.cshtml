@@ -1,0 +1,12 @@
+@model Product1
+<h1>Create Product</h1>
+@using (Html.BeginForm())
+{
+    <div class="form-group">@Html.LabelFor(m => m.Name) @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.Description) @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.price) @Html.TextBoxFor(m => m.price, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.quantity) @Html.TextBoxFor(m => m.quantity, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.CategoryId) @Html.DropDownListFor(m => m.CategoryId, (SelectList)ViewBag.Categories, "Choose Category", new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.SupplierId) @Html.DropDownListFor(m => m.SupplierId, (SelectList)ViewBag.Suppliers, "Choose Supplier", new { @class = "form-control" })</div>
+    <br /><button type="submit" class="btn btn-primary">Save</button> <a asp-action="Index" class="btn btn-secondary">Back</a>
+}

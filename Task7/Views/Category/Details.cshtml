@@ -1,0 +1,30 @@
+﻿@model UniversityCafeteriaManagement1.Models.Category1
+
+@{
+    ViewData["Title"] = "Category Details";
+}
+
+<h2 class="mb-4">Category Details</h2>
+
+<div class="card shadow-sm p-4 mb-4">
+    <dl class="row mb-0">
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold mt-3">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-9 mt-3">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", "Category", new { id = Model.Id }, new { @class = "btn btn-primary me-2" })
+    @Html.ActionLink("Back to List", "Index", "Category", null, new { @class = "btn btn-secondary" })
+</div>

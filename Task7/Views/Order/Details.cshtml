@@ -1,0 +1,6 @@
+@model Order1
+<h1>Order Details</h1>
+<p><b>Customer Name:</b> @Html.DisplayFor(m => m.CustomerName)</p><p><b>Order Date:</b> @Html.DisplayFor(m => m.OrderDate)</p>
+<p><b>Total Price:</b> @Html.DisplayFor(m => m.TotalPrice)</p><p><b>Status:</b> @Html.DisplayFor(m => m.Status)</p>
+<p><b>Employee Id:</b> @Html.DisplayFor(m => m.EmployeeId)</p>
+@Html.ActionLink("Back to List", "Index", "Order", null, new { @class = "btn btn-secondary" })

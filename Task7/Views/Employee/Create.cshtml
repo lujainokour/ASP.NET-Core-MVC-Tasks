@@ -1,0 +1,12 @@
+@model Employee1
+<h1>Create Employee</h1>
+@using (Html.BeginForm())
+{
+    <div class="form-group">@Html.LabelFor(m => m.Name) @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.phone) @Html.TextBoxFor(m => m.phone, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.email) @Html.TextBoxFor(m => m.email, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.position) @Html.TextBoxFor(m => m.position, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.Salary) @Html.TextBoxFor(m => m.Salary, new { @class = "form-control" })</div>
+    <div class="form-group">@Html.LabelFor(m => m.HireData) @Html.TextBoxFor(m => m.HireData, new { @class = "form-control" })</div>
+    <br /><button type="submit" class="btn btn-primary">Save</button> <a asp-action="Index" class="btn btn-secondary">Back</a>
+}

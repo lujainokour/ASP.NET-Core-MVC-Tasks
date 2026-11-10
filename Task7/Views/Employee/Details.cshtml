@@ -1,0 +1,6 @@
+@model Employee1
+<h1>Employee Details</h1>
+<p><b>Name:</b> @Html.DisplayFor(m => m.Name)</p><p><b>Phone:</b> @Html.DisplayFor(m => m.phone)</p>
+<p><b>Email:</b> @Html.DisplayFor(m => m.email)</p><p><b>Position:</b> @Html.DisplayFor(m => m.position)</p>
+<p><b>Salary:</b> @Html.DisplayFor(m => m.Salary)</p><p><b>Hire Date:</b> @Html.DisplayFor(m => m.HireData)</p>
+@Html.ActionLink("Back to List", "Index", "Employee", null, new { @class = "btn btn-secondary" })

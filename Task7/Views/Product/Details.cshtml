@@ -1,0 +1,6 @@
+@model Product1
+<h1>Product Details</h1>
+<p><b>Name:</b> @Html.DisplayFor(m => m.Name)</p><p><b>Description:</b> @Html.DisplayFor(m => m.Description)</p>
+<p><b>Price:</b> @Html.DisplayFor(m => m.price)</p><p><b>Quantity:</b> @Html.DisplayFor(m => m.quantity)</p>
+<p><b>Category Id:</b> @Html.DisplayFor(m => m.CategoryId)</p><p><b>Supplier Id:</b> @Html.DisplayFor(m => m.SupplierId)</p>
+@Html.ActionLink("Back to List", "Index", "Product", null, new { @class = "btn btn-secondary" })
