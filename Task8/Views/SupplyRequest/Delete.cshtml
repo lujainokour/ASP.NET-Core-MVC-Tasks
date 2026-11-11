@@ -1,0 +1,10 @@
+@model SupplyRequest
+@{
+    ViewData["Title"] = "Delete Request";
+}
+<h2>Delete Request #@Model.Id</h2>
+<p>Delete this pending request and all its items?</p>
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

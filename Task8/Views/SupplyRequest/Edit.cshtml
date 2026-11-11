@@ -1,0 +1,9 @@
+@model RequestFormViewModel
+@{
+    ViewData["Title"] = "Edit Request";
+}
+<h2>Edit Request #@Model.Id</h2>
+<p>Prices are recalculated using current product prices when you save.</p>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <partial name="_RequestForm" model="Model" />
+</form>

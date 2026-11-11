@@ -1,0 +1,45 @@
+@model RequestDetailsViewModel
+@{
+    ViewData["Title"] = "Request Details";
+    bool isAdmin = User.IsInRole("Admin") || User.IsInRole("SuperAdmin");
+    bool isOwner = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value == Model.Request.UserId;
+}
+<h2>Request #@Model.Request.Id</h2>
+<p><strong>Employee:</strong> @Model.FullName</p>
+<p><strong>Date:</strong> @Model.Request.RequestDate.ToString("yyyy-MM-dd HH:mm")</p>
+<p><strong>Status:</strong> @Model.Request.Status</p>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead><tr><th>Product</th><th>Unit Price</th><th>Quantity</th><th>Subtotal</th></tr></thead>
+        <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price.ToString("0.00")</td>
+                <td>@item.Quantity</td>
+                <td>@((item.Price * item.Quantity).ToString("0.00"))</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<p><strong>Total Price:</strong> @Model.Request.TotalPrice.ToString("0.00")</p>
+@if (Model.Request.Status == "Pending")
+{
+    @if (isOwner)
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Request.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Request.Id" class="btn btn-danger">Delete</a>
+    }
+    @if (isAdmin)
+    {
+        <form asp-action="Approve" asp-route-id="@Model.Request.Id" method="post" class="d-inline">
+            <button type="submit" class="btn btn-success">Approve</button>
+        </form>
+        <form asp-action="Reject" asp-route-id="@Model.Request.Id" method="post" class="d-inline">
+            <button type="submit" class="btn btn-warning">Reject</button>
+        </form>
+    }
+}
+<a asp-action="Index" class="btn btn-secondary">Back</a>

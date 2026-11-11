@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Home";
+}
+<h1>University Cafeteria</h1>
+<p>Create supply requests and track their status.</p>
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <a asp-controller="Product" asp-action="Index" class="btn btn-primary">View Products</a>
+    <a asp-controller="SupplyRequest" asp-action="Index" class="btn btn-secondary">View Requests</a>
+    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+    {
+        <p class="mt-3">You can manage products and approve or reject supply requests.</p>
+    }
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-primary mt-2">Manage Users</a>
+    }
+}
+else
+{
+    <a asp-controller="Account" asp-action="Register" class="btn btn-primary">Register</a>
+    <a asp-controller="Account" asp-action="Login" class="btn btn-secondary">Login</a>
+}

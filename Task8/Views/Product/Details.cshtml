@@ -1,0 +1,9 @@
+@model Product
+@{
+    ViewData["Title"] = "Product Details";
+}
+<h2>@Model.Name</h2>
+<p>@Model.Description</p>
+<p><strong>Price:</strong> @Model.Price.ToString("0.00")</p>
+<p><strong>Available Quantity:</strong> @Model.Quantity</p>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

@@ -1,0 +1,8 @@
+@model Product
+@{
+    ViewData["Title"] = "Add Product";
+}
+<h2>Add Product</h2>
+<form asp-action="Create" method="post">
+    <partial name="_ProductForm" model="Model" />
+</form>
